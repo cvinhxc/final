@@ -57,7 +57,7 @@ body {
 .container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 40px 80px 40px;
 }
 
 /* ========================================================================= */
@@ -643,8 +643,6 @@ h1 {
     color: var(--color-bg);
     opacity: 0.8;
 }
-
-/* --- Tiêu đề & Zigzag --- */
 .about-me-title {
     font-family: var(--font-heading);
     font-size: 3.5em;
@@ -735,7 +733,6 @@ h1 {
     grid-row: 3 / 4;
 }
 
-/* --- ĐỊNH DẠNG CHUNG CHO CÁC Ô TEXT & ẢNH --- */
 .about-me-text-column p,
 .about-text-card p {
     font-family: var(--font-body);
@@ -774,7 +771,7 @@ h1 {
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: none; /* show color */
+    filter: none; 
 }
 
 .highlight-gradient {
@@ -813,21 +810,19 @@ h1 {
 /* 7. FOOTER SECTION */
 /* ========================================================================= */
 
-.contact-banner-section {
-    background-color: var(--color-footer-bg);
-    padding: 70px 20px 40px;
-    position: relative;
-    overflow-x: hidden;
-}
-
 .banner-container {
     background-color: var(--color-purple);
     border-radius: 25px;
-    padding: 35px 50px;
-    max-width: 950px;
-    margin: 0 auto;
-    position: relative;
+    padding: 50px 50px;
+    width: 90%;
+    position: absolute;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+    bottom: 68%;
+   transform: translateX(-50%);
+   left: 50%;
+   
+    
 }
 
 .banner-container p {
@@ -846,19 +841,19 @@ h1 {
 
 .banner-graphic-left {
     position: absolute;
-    left: -50px;
-    bottom: -70px;
+    left: -5px;
     width: 190px;
     height: auto;
     z-index: 1;
+    bottom: 0px;
 }
 
 .banner-waves-right {
     position: absolute;
-    right: 30px;
-    top: 50%;
+    right: 50px;
+    top: 40%;
     transform: translateY(-50%);
-    width: 80px;
+    width: 40px;
     height: auto;
     opacity: 1;
     z-index: 1;
@@ -867,16 +862,26 @@ h1 {
 .main-footer {
     background-color: var(--color-tag-text);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
-    padding: 30px 5%;
-    border-top: 1px solid var(--color-weak-border);
-    border-bottom: 2px solid rgba(0,0,0,0.04);
+    /* padding: 2.5%; */
+    border-top: 0px solid var(--color-weak-border);
+    border-bottom: 50px solid rgba(0,0,0,0.04);
+    position: relative;
+    text-align: left;
+    min-height: 0px; 
 }
 
-.footer-logo {
+.footer-menu {
     display: flex;
+    /* flex-direction: column;  */
+    width: 100%;
+    /* height: 100%;  */
+    padding: 50px 40px 40px 40px;
+    border-bottom: 1px solid #fff;
+    justify-content: space-between;
     align-items: center;
+    
 }
 
 .tian-text-logo {
@@ -884,38 +889,46 @@ h1 {
     color: var(--color-bg);
     font-size: 2.2rem;
     letter-spacing: 0px;
-    line-height: 1;
+    line-height:1;
+}
+
+.footer-nav {
+    margin-top: auto; 
+    /* align-self: flex-end;  */
+    
 }
 
 .footer-nav a {
     font-family: var(--font-body);
     color: var(--color-bg);
     text-decoration: none;
-    margin-left: 35px;
+    margin-left: 10px; 
     font-size: 1rem;
     font-weight: 500;
     transition: color var(--color-transition-speed);
+    padding-bottom: 5px; 
+    padding-top: 5px; 
+    letter-spacing: -1px; 
 }
+.line-footer{
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
 
-.footer-nav a:hover {
-    color: var(--color-name-start);
 }
+   
 
 /* ========================================================================= */
 /* 8. MEDIA QUERIES (RESPONSIVE) */
 /* ========================================================================= */
 
 @media (max-width: 1200px) {
-    /* Tablet/Laptop nhỏ */
     .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 900px) {
-    /* Tablet dọc */
-
-    /* CHUNG */
     .container {
         padding: 0 25px;
     }
@@ -926,8 +939,6 @@ h1 {
         font-size: 3em;
         margin: 60px 0 30px 0;
     }
-
-    /* HEADER & NAV */
     .contact-btn {
         display: none;
     }
@@ -935,10 +946,8 @@ h1 {
         display: block;
     }
     header nav {
-        display: none; /* Mặc định ẩn nav */
+        display: none; 
     }
-
-    /* HERO SECTION */
     .hero-graphic-right {
         display: none;
     }
@@ -956,7 +965,7 @@ h1 {
         width: 100%;
     }
 
-    /* STATS SECTION */
+
     .statistics-section {
         flex-direction: column;
         gap: 30px;
@@ -966,15 +975,12 @@ h1 {
         display: none;
     }
 
-    /* PORTFOLIO & SKILLS */
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     .skills-grid {
         grid-template-columns: 1fr;
     }
-
-    /* ABOUT ME: CHUYỂN THÀNH DỌC */
     .about-me-grid-full {
         display: flex;
         flex-direction: column;
@@ -1017,12 +1023,12 @@ h1 {
         font-size: 0.9rem;
     }
 
-    /* MOBILE MENU OVERLAY STYLES */
+   
     body.menu-open nav {
         display: flex;
         flex-direction: column;
 
-        /* Chuyển menu thành overlay toàn màn hình */
+  
         position: fixed;
         top: 0;
         left: 0;
@@ -1041,7 +1047,6 @@ h1 {
         transform: translateX(0);
     }
 
-    /* Ẩn thanh cuộn dọc khi menu mở */
     body.menu-open {
         overflow-y: hidden;
     }
@@ -1056,19 +1061,16 @@ h1 {
 }
 
 @media (max-width: 600px) {
-    /* Mobile Layout - Áp dụng theo ảnh bạn cung cấp */
+  
 
-    /* CHUNG */
+
     .container {
         padding: 0 15px;
     }
-
-    /* 1. HEADER */
     header {
         padding: 15px 15px;
     }
 
-    /* Logo có icon trên mobile */
     .logo {
         font-size: 1.1em;
     }
@@ -1077,13 +1079,11 @@ h1 {
         font-size: 1.5em;
     }
 
-    /* 2. HEADER ACTIONS */
     .header-actions {
         gap: 10px;
         justify-content: flex-end;
     }
 
-    /* ẨN Theme Switch (theo ảnh mobile) */
     .theme-switch {
         display: none;
     }
@@ -1091,13 +1091,10 @@ h1 {
         display: block;
         order: 2;
     }
-
-    /* 3. HERO SECTION */
     .hero-section {
         padding-top: 80px;
     }
 
-    /* Căn giữa tiêu đề */
     h1 {
         font-size: 3.5em;
         line-height: 1;
@@ -1106,7 +1103,6 @@ h1 {
         font-size: 1.5em;
     }
 
-    /* Căn giữa Social Icons và Download Button */
     .social-icons {
         justify-content: center;
         gap: 25px;
@@ -1116,8 +1112,6 @@ h1 {
         width: 100%;
         justify-content: center;
     }
-
-    /* 4. STATISTICS SECTION */
     .statistics-section {
         flex-direction: column;
         margin-top: 40px;
@@ -1129,7 +1123,6 @@ h1 {
         border-bottom: none;
     }
 
-    /* 5. PORTFOLIO & SKILLS */
     .portfolio-grid, .skills-grid {
         grid-template-columns: 1fr;
     }
@@ -1145,8 +1138,6 @@ h1 {
         margin-right: 0;
         margin-bottom: 15px;
     }
-
-    /* 6. ABOUT ME MOBILE */
     .about-me-title {
         font-size: 2em;
         justify-content: center;
@@ -1199,8 +1190,7 @@ h1 {
     }
 }
 
-/* Small utility helpers (optional, kept lightweight) */
 .hidden { display: none !important; }
 .center { display:flex; align-items:center; justify-content:center; }
 
-/* End of Light Mode CSS */
+
