@@ -57,3 +57,30 @@
       init();
     }
   })();
+  // --- Bổ sung Logic Menu Mobile ---
+
+(function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const body = document.querySelector('body');
+    // Menu toggle chỉ hoạt động nếu phần tử tồn tại
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            // Thêm/Xóa class 'open' trên nút toggle để chuyển icon 3 gạch <-> X
+            menuToggle.classList.toggle('open');
+            
+            // Thêm/Xóa class 'menu-open' trên thẻ body để kích hoạt CSS mở menu
+            body.classList.toggle('menu-open');
+        });
+    }
+
+    // Tùy chọn: Đóng menu khi người dùng click vào bất kỳ link nào
+    const navLinks = document.querySelectorAll('header nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (body.classList.contains('menu-open')) {
+                menuToggle.classList.remove('open');
+                body.classList.remove('menu-open');
+            }
+        });
+    });
+})();

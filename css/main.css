@@ -951,9 +951,49 @@ h1 {
     .menu-toggle {
         display: block;
     }
+    
+    /* Cấu hình trạng thái MẶC ĐỊNH của menu mobile (menu đang đóng) */
     header nav {
-        display: none;
+        display: flex; /* Dùng flex để menu không biến mất hoàn toàn */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0; /* Ẩn menu ra khỏi màn hình (về bên phải) */
+        width: 100vw;
+        height: 100vh;
+
+        background-color: var(--color-surface);
+        padding-top: 100px;
+
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        z-index: 1000;
+
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Trạng thái đóng: di chuyển ra ngoài màn hình */
+        visibility: hidden; /* Ngăn chặn tương tác khi đóng */
     }
+    
+    /* Cấu hình trạng thái KHI MENU ĐƯỢC MỞ (.menu-open) */
+    body.menu-open nav {
+        transform: translateX(0); /* Trạng thái mở: kéo vào màn hình */
+        visibility: visible; /* Cho phép tương tác khi mở */
+    }
+
+    body.menu-open {
+        overflow-y: hidden;
+    }
+
+    body.menu-open nav a {
+        font-size: 1.5em;
+        margin: 20px 0;
+        padding: 10px 0;
+        width: 80%;
+        border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    
+    /* Phần còn lại của @media 900px */
     .hero-graphic-right {
         display: none;
     }
@@ -969,6 +1009,7 @@ h1 {
     }
     .download-btn {
         width: 100%;
+        margin-left: 0; /* Căn chỉnh lại margin */
     }
 
     .statistics-section {
@@ -1027,39 +1068,6 @@ h1 {
         margin: 0 15px;
         font-size: 0.9rem;
     }
-
-    body.menu-open nav {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-
-        background-color: var(--color-surface);
-        padding-top: 100px;
-
-        justify-content: flex-start;
-        align-items: center;
-        text-align: center;
-        z-index: 1000;
-
-        transition: transform 0.3s ease-in-out;
-        transform: translateX(0);
-    }
-
-    body.menu-open {
-        overflow-y: hidden;
-    }
-
-    body.menu-open nav a {
-        font-size: 1.5em;
-        margin: 20px 0;
-        padding: 10px 0;
-        width: 80%;
-        border-bottom: 1px solid rgba(0,0,0,0.04);
-    }
 }
 
 @media (max-width: 600px) {
@@ -1090,6 +1098,7 @@ h1 {
         display: block;
         order: 2;
     }
+    /* Không cần định nghĩa lại nav/body.menu-open nav ở đây trừ khi bạn muốn thay đổi kích thước chữ/padding mobile */
     .hero-section {
         padding-top: 80px;
     }
@@ -1097,19 +1106,23 @@ h1 {
     h1 {
         font-size: 3.5em;
         line-height: 1;
+        margin-left: 0; /* Căn giữa */
     }
     .name-highlight {
         font-size: 1.5em;
+        margin-left: 0; /* Căn giữa */
     }
 
     .social-icons {
         justify-content: center;
         gap: 25px;
         margin-bottom: 25px;
+        margin-left: 0; /* Căn giữa */
     }
     .download-btn {
         width: 100%;
         justify-content: center;
+        margin-left: 0; /* Căn giữa */
     }
     .statistics-section {
         flex-direction: column;
