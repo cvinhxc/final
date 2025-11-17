@@ -1,5 +1,5 @@
 :root {
-    /* Cấu hình biến màu và font toàn cục - Light Mode */
+    /* Cấu hình biến màu và font toàn cục - Light Mode (mặc định) */
     --color-bg: #ffffff;
     --color-surface: #fafafa;
     --color-card: #ffffff;
@@ -27,8 +27,14 @@
     --shadow-soft: 0 8px 25px rgba(17,17,17,0.06);
     --color-stats-greens: #d5f1e1;
     --color-purples: #a700f528;
+}
 
-
+/* ---------------------------
+   Smooth theme transition helper
+   (applied dynamically by JS after first paint)
+   --------------------------- */
+.theme-transition * {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
 /* Reset cơ bản */
@@ -166,7 +172,7 @@ nav a:hover {
     opacity: 1;
 }
 input:checked + .slider {
-    background-color: var(--color-text);
+    background-color: var(--color-yellow);
 }
 input:checked + .slider:before {
     transform: translateX(30px);
@@ -182,7 +188,7 @@ input:checked + .slider::after {
     font-weight: 700;
     cursor: pointer;
     border-radius: 5px;
-    background-image: linear-gradient(1deg, var(--color-text));
+    background-image: linear-gradient(1deg, var(--color-purple));
     color: #ffffff;
     border: none;
     transition: all var(--color-transition-speed);
@@ -261,7 +267,6 @@ h1 {
     -webkit-text-fill-color: transparent;
     display: inline-block;
     margin-left: 25px;
-
 }
 
 .social-icons {
@@ -297,7 +302,7 @@ h1 {
 
 .download-btn {
     width: 65%;
-    background-color: var(--color-text);
+    background-color: var(--color-tag-text);
     color: var(--color-card);
     padding: 13px 20px;
     margin-top: 15px;
@@ -314,26 +319,25 @@ h1 {
     margin-left: 33px;
 }
 
-
 .hero-graphic-right {
     flex: 1;
-    max-width: 55%; 
-    height: 700px; 
+    max-width: 55%;
+    height: 700px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
-    background-color: var(--color-black); 
+    overflow: hidden;
+    background-color: var(--color-black, var(--color-surface));
 }
 .hero-profile-img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;      
-    height: 100%;     
-    object-fit: contain; 
-    object-position: center; 
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
     display: block;
 }
 
@@ -348,7 +352,7 @@ h1 {
     display: flex;
     justify-content: space-around;
     padding: 50px 0;
-    background-color: #fff;
+    background-color: var(--color-card);
     margin-top: 50px;
     border-radius: 10px;
     text-align: center;
@@ -414,13 +418,12 @@ h1 {
 .project-card {
     background-color: var(--color-card);
     border-radius: 12px;
-    border: 1px solid var(--color-text);
+    border: 1px solid var(--color-card-border);
     padding: 15px;
     transition: all var(--color-transition-speed) ease;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-
 }
 
 .project-card:hover {
@@ -769,7 +772,7 @@ h1 {
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: none; 
+    filter: none;
 }
 
 .highlight-gradient {
@@ -814,9 +817,7 @@ h1 {
 }
 .highlight-blue-lomb {
     color: rgb(0, 200, 255);
-
 }
-
 
 /* ========================================================================= */
 /* 7. FOOTER SECTION */
@@ -828,13 +829,11 @@ h1 {
     padding: 50px 50px;
     width: 90%;
     position: absolute;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-soft);
     z-index: 10;
     bottom: 68%;
-   transform: translateX(-50%);
-   left: 50%;
-   
-    
+    transform: translateX(-50%);
+    left: 50%;
 }
 
 .banner-container p {
@@ -874,14 +873,14 @@ h1 {
 .main-footer {
     background-color: var(--color-tag-text);
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     /* padding: 2.5%; */
     border-top: 0px solid var(--color-weak-border);
     border-bottom: 50px solid rgba(0,0,0,0.04);
     position: relative;
     text-align: left;
-    min-height: 0px; 
+    min-height: 0px;
 }
 
 .footer-menu {
@@ -893,7 +892,6 @@ h1 {
     border-bottom: 1px solid #fff;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .tian-text-logo {
@@ -905,30 +903,26 @@ h1 {
 }
 
 .footer-nav {
-    margin-top: auto; 
-    /* align-self: flex-end;  */
-    
+    margin-top: auto;
 }
 
 .footer-nav a {
     font-family: var(--font-body);
     color: var(--color-bg);
     text-decoration: none;
-    margin-left: 10px; 
+    margin-left: 10px;
     font-size: 1rem;
     font-weight: 500;
     transition: color var(--color-transition-speed);
-    padding-bottom: 5px; 
-    padding-top: 5px; 
-    letter-spacing: -1px; 
+    padding-bottom: 5px;
+    padding-top: 5px;
+    letter-spacing: -1px;
 }
 .line-footer{
     width: 100%;
     height: 1px;
     background-color: #fff;
-
 }
-   
 
 /* ========================================================================= */
 /* 8. MEDIA QUERIES (RESPONSIVE) */
@@ -958,7 +952,7 @@ h1 {
         display: block;
     }
     header nav {
-        display: none; 
+        display: none;
     }
     .hero-graphic-right {
         display: none;
@@ -976,7 +970,6 @@ h1 {
     .download-btn {
         width: 100%;
     }
-
 
     .statistics-section {
         flex-direction: column;
@@ -1035,12 +1028,9 @@ h1 {
         font-size: 0.9rem;
     }
 
-   
     body.menu-open nav {
         display: flex;
         flex-direction: column;
-
-  
         position: fixed;
         top: 0;
         left: 0;
@@ -1073,9 +1063,6 @@ h1 {
 }
 
 @media (max-width: 600px) {
-  
-
-
     .container {
         padding: 0 15px;
     }
@@ -1205,4 +1192,102 @@ h1 {
 .hidden { display: none !important; }
 .center { display:flex; align-items:center; justify-content:center; }
 
+/* ========================================================================= */
+/* Dark theme overrides (applied when JS sets html[data-theme="dark"])
+   KHỐI NÀY ĐÃ ĐƯỢC GỘP LẠI VÀ FIX LỖI MÀU FOOTER */
+/* ========================================================================= */
+:root[data-theme="dark"] {
+    /* --- BIẾN CHUNG CHO GIAO DIỆN TRÊN --- */
+    --color-bg: #0A0A0A; /* Đen rất đậm */
+    --color-surface: #121212; /* Hơi nhạt hơn nền */
+    --color-card: #141414; /* Màu thẻ/ô */
+    
+    /* Viền */
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-weak-border: rgba(255, 255, 255, 0.04);
+    --color-card-border: rgba(255, 255, 255, 0.1); 
+    
+    /* Màu chữ */
+    --color-text: #FEFEFE; /* Trắng sáng */
+    --color-subtext: #BBBBBB; /* Xám nhạt */
+    
+    /* Màu Gradient chính */
+    --color-name-start: #FF69B4; 
+    --color-name-end: #FF8C00; 
+    --color-toggle-yellow: #FFCC00; 
+    --color-stats-green: #28c76f; 
+    --color-purple: #9d50f8; /* Tím nổi bật cho Banner/Tags */
+    --color-yellow: #ffcc00;
+    
+    /* Màu nền cho Stats/Tags nhạt */
+    --color-stats-greens: #0b2f20;
+    --color-purples: #9d50f828; 
+    
+    /* Màu Tag & Nút */
+    --color-tag-bg: #16151a;
+    --color-tag-text: #e6e6e6; /* Màu nút Download/CV */
+    --color-community-btn-bg: var(--color-card);
+    --color-transition-speed: 0.3s;
 
+    /* --- BIẾN FOOTER (GIỮ NGUYÊN GIÁ TRỊ GỐC ĐỂ PHÒNG NGỪA) --- */
+    --color-footer-banner: #ff8c00; 
+    --color-footer-bg: #0b0b0b; /* Chỉ là giá trị mặc định, sẽ bị override bên dưới */
+    
+    /* Shadows & Fonts */
+    --shadow-soft: 0 8px 25px rgba(0,0,0,0.5);
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* --- OVERRIDE CỤ THỂ CHO DARK MODE --- */
+
+/* 1. OVERRIDE CHO PHẦN TRÊN */
+:root[data-theme="dark"] .skill-card {
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+:root[data-theme="dark"] .testimonial-banner-wrapper {
+    background-image: linear-gradient(135deg, #FF4081, #9C27B0, #FF9800);
+    color: #FFFFFF; 
+}
+
+:root[data-theme="dark"] .testimonial-quote {
+    color: #FFFFFF;
+}
+
+:root[data-theme="dark"] .social-icons a {
+    background-color: var(--color-card);
+    border-color: var(--color-card-border);
+}
+
+:root[data-theme="dark"] .zigzag-line {
+    background-image: linear-gradient(
+        45deg, transparent 25%, #f5f5f5 25%, #f5f5f5 50%, transparent 50%, transparent 75%, #f5f5f5 75%, #f5f5f5 100%
+    );
+}
+
+:root[data-theme="dark"] .download-btn {
+    background-color: var(--color-tag-text); 
+    color: var(--color-card); 
+}
+
+/* 2. OVERRIDE CỐ ĐỊNH CHO FOOTER (ĐỂ GIỮ NGUYÊN MÀU) */
+
+:root[data-theme="dark"] .main-footer {
+    /* Màu nền footer gốc trong Light Mode là var(--color-tag-text), tức #333333 */
+    background-color: #303030; /* Sử dụng màu xám đậm cố định, gần #333333 */
+    border-bottom: 50px solid rgba(255, 255, 255, 0.04); /* Giữ viền đáy nhạt */
+}
+
+:root[data-theme="dark"] .tian-text-logo,
+:root[data-theme="dark"] .footer-nav a {
+    /* Màu chữ footer gốc trong Light Mode là var(--color-bg), tức #ffffff */
+    color: #FFFFFF; /* Buộc màu chữ thành trắng sáng */
+}
+
+:root[data-theme="dark"] .line-footer {
+    /* Đường kẻ phân cách (trắng nhẹ) */
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+/* End of file */
